@@ -1,0 +1,110 @@
+[
+  {
+    "id": "1001",
+    "title": "Login Issues - Can't Access Account",
+    "description": "Customer is unable to log in to their account. They've tried resetting their password multiple times but still no success.",
+    "customer": "John Smith",
+    "priority": "HIGH PRIORITY",
+    "status": "Open",
+    "createdAt": "2024-01-15"
+  },
+  {
+    "id": "1003",
+    "title": "Unable to Download Invoice",
+    "description": "Customer cannot download their January invoice from the billing section. The download button is unresponsive on all browsers.",
+    "customer": "Michael Brown",
+    "priority": "MEDIUM PRIORITY",
+    "status": "In- Progress",
+    "createdAt": "2024-01-17"
+  },
+  {
+    "id": "1005",
+    "title": "Database Connection Intermittent Failure",
+    "description": "The main production database is experiencing intermittent connection drops, affecting all services. Need to escalate immediately.",
+    "customer": "Alice Johnson",
+    "priority": "HIGH PRIORITY",
+    "status": "In- Progress",
+    "createdAt": "2024-01-18"
+  },
+  {
+    "id": "1006",
+    "title": "Feature Request: Dark Mode Toggle",
+    "description": "User requested a persistent dark mode option in the settings panel for late-night use. Low priority enhancement.",
+    "customer": "Emily Clark",
+    "priority": "LOW PRIORITY",
+    "status": "Open",
+    "createdAt": "2024-01-18"
+  },
+  {
+    "id": "1007",
+    "title": "Billing Incorrectly Charged Twice",
+    "description": "Received two charges for the monthly subscription on the same day. Requires immediate financial review and refund processing.",
+    "customer": "Sarah Davis",
+    "priority": "HIGH PRIORITY",
+    "status": "In- Progress",
+    "createdAt": "2024-01-19"
+  },
+  {
+    "id": "1009",
+    "title": "Broken Link on Homepage Header",
+    "description": "The 'Pricing' link in the main navigation bar returns a 404 error when clicked. Needs correction before marketing campaign launch.",
+    "customer": "David Lee",
+    "priority": "MEDIUM PRIORITY",
+    "status": "Open",
+    "createdAt": "2024-01-20"
+  },
+  {
+    "id": "1011",
+    "title": "Mobile App Crashing on iOS 17",
+    "description": "Reported crash upon opening the mobile application on all devices running the latest iOS 17 update. Major user experience issue.",
+    "customer": "Chris Evans",
+    "priority": "HIGH PRIORITY",
+    "status": "In- Progress",
+    "createdAt": "2024-01-21"
+  },
+  {
+    "id": "1015",
+    "title": "Request to Change Email Address",
+    "description": "User requested to update the primary email address on their account from old@example.com to new@example.com.",
+    "customer": "Jane Doe",
+    "priority": "LOW PRIORITY",
+    "status": "Open",
+    "createdAt": "2024-01-22"
+  },
+  {
+    "id": "1018",
+    "title": "Search Bar Filter Malfunction",
+    "description": "When applying the 'Date Range' filter in the main search bar, the results do not update correctly and causes lag.",
+    "customer": "Alex Turner",
+    "priority": "MEDIUM PRIORITY",
+    "status": "Open",
+    "createdAt": "2024-01-23"
+  },
+  {
+    "id": "1020",
+    "title": "Incorrect Sales Tax Calculation",
+    "description": "A specific subset of users in California is being charged the wrong sales tax rate during checkout. Immediate fix needed for compliance.",
+    "customer": "Rachel Green",
+    "priority": "HIGH PRIORITY",
+    "status": "In- Progress",
+    "createdAt": "2024-01-24"
+  },
+  {
+    "id": "1022",
+    "title": "Missing Documentation for API v3",
+    "description": "The publicly available API documentation is missing the reference section for all new endpoints introduced in API version 3.",
+    "customer": "Andrew Scott",
+    "priority": "MEDIUM PRIORITY",
+    "status": "Open",
+    "createdAt": "2024-01-25"
+  },
+  {
+    "id": "1025",
+    "title": "Suggestion: Add Export to CSV Option",
+    "description": "Customer requested an option to export the data grid contents directly to a CSV file from the reporting dashboard for offline analysis.",
+    "customer": "Ben Wyatt",
+    "priority": "LOW PRIORITY",
+    "status": "Open",
+    "createdAt": "2024-01-26"
+  }
+]
