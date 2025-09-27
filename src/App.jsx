@@ -1,71 +1,75 @@
-import { Suspense, useState } from 'react'
+import { Suspense, useState, useEffect } from 'react'
 import './App.css'
-import CustomerTickets from './components/CustomerTickets/CustomerTickets'
-import Footer from './components/Footer/Footer'
 import Navbar from './components/Navbar/Navbar'
 import Banner from './components/Banner/Banner'
+import CustomerTicket from './components/CustomerTickets/CustomerTickets'
+import Footer from './components/Footer/Footer'
 import { toast, ToastContainer } from 'react-toastify';
-// import "@fortawesome/fontawesome-free/css/all.min.css";
+
 
 const fetchTickets = async() =>{
     const res = await fetch('/tickets.json')
     return res.json();
   }
-// console.log(fetchTickets);
-const ticketsPromise = fetchTickets()
-// console.log(ticketsPromise);
 
+const App =() => {
+const [pending, setPending] = useState([]);
+  const [inProgress, setInProgress] = useState([]);
+  const [resolved, setResolved] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    const loadTickets = async () => {
+      try {
+        setLoading(true);
+        const data = await fetchTickets();
+        setPending(data);
+      } catch (err) {
+        console.error("Error fetching tickets:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadTickets();
+  }, []);
 
-function App() {
-
-   // Start here-1
-  const [inProgress, setInProgress] = useState([])
-  const [resoulved, setResoulved] = useState([]);  
-
-
-    const addToInProgress = (ticket) => {
-    
-    if (inProgress.find((t) => t.id === ticket.id) || resoulved.find((t) => t.id === ticket.id)) 
-    return;
-    setInProgress((inProgress) => [...inProgress, ticket]); 
-    toast(" Ticket added to progress section");
+  const handleStart = (ticketId) => {
+    const ticket = pending.find((t) => t.id === ticketId);
+    if (!ticket) return;
+    setPending((prev) => prev.filter((t) => t.id !== ticketId));
+    setInProgress((prev) => [...prev, ticket]);
+    toast(" Ticket added to in-progress section");
   };
 
-
-  const resoulvedTicket = (ticket) => {
-    setInProgress((resoulve) => resoulve.filter((t) => t.id !== ticket.id));
-    setResoulved((resoulve) => [...resoulve, ticket]);
-    toast("Ticket remove from progress section")
+  const handleComplete = (ticketId) => {
+    const ticket = inProgress.find((t) => t.id === ticketId);
+    if (!ticket) return;
+    setInProgress((prev) => prev.filter((t) => t.id !== ticketId));
+    setResolved((prev) => [...prev, ticket]);
+    toast(" Ticket closed to resolved section");
   };
-  // End here-1
-  
+
+if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+          <span className="loading loading-infinity loading-xl"></span>
+          </div>
+    );
+  }
+
   return (
     <>
       <Navbar></Navbar>
-      <Banner inProgress={inProgress.length} resoulved={resoulved.length}></Banner>
-        <div className="flex-1">
-          <h2 className="text-xl font-bold mb-3">Task Status (In-Progress)</h2>
-          {inProgress.length === 0 ? (
-            <p className="text-gray-500">No tasks in progress.</p>
-          ) : (
-            inProgress.map((ticket) => (
-              <div
-                key={ticket.id}
-                onClick={() => resoulvedTicket(ticket)}
-                className="bg-white border rounded p-3 mb-2 shadow cursor-pointer hover:bg-green-50"
-              >
-                {ticket.title}
-              </div>
-            ))
-          )}
-        </div>
-      <Suspense fallback={
-          <div className="flex items-center justify-center h-screen">
-          <span className="loading loading-infinity loading-xl"></span>
-          </div>}>
-        <CustomerTickets ticketsPromise={ticketsPromise} onResoulve={resoulvedTicket} onClick={addToInProgress}></CustomerTickets>
-      </Suspense>
+      <div className=" bg-gray-100 max-w-[1600px] mx-auto p-2 border-5 border-amber-500">
+      <div className="max-w-[1600px] mx-auto border-3 border-blue-700">
+        <Banner inProgress={inProgress.length} resolved={resolved.length} />
+          <CustomerTicket pending={pending}
+          inProgress={inProgress}
+          resolved={resolved}
+          onStart={handleStart}
+          onComplete={handleComplete}> </CustomerTicket>
+      </div>
+    </div>
 
       <Footer></Footer>
     

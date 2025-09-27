@@ -1,49 +1,92 @@
-import React, { use } from 'react';
-import TicketsCard from '../TicketsCard/TicketsCard';
-const CustomerTickets = ({ticketsPromise, onClick}) => {
-    const ticketData = use(ticketsPromise)
-    // console.log(ticketData);
-    
-    return (
-    <div>
-        {/* Main section */}
-        <div className='card-parent border-2 border-red-500 mt-10 max-w-[1600px]  mx-auto'>
-                <h1 className='text-3xl font-bold ml-15 my-5'>Customer Tickets</h1>
-        {/* Tickets Card and Ticket Status */}
-        <div className='flex justify-center'>
-            {/* Card Start*/}
-            <div className="border-2 border-red-500 mt-10 max-w-[1600px] mx-auto grid grid-cols-2">
-                {
-                    ticketData.map(tickets => (
-                    
-                        
-                    <TicketsCard tickets={tickets} onClick={onClick}></TicketsCard>))}
+import React, { } from 'react';
+
+const CustomerTicket = ({ pending, inProgress, resolved, onStart, onComplete, status })=> {
+
+  return (
+    <div className="border-2 border-red-500 max-w-[1600px] grid grid-cols-3 gap-6">
+      <div className="border-2 border-green-500 w-[1100px] col-span-2 bg-white p-2 rounded-xl shadow">
+        <h2 className="text-2xl font-semibold mb-4">Customer Tickets</h2>
+
+        <div className="grid grid-cols-2 gap-4 border-2 border-red-500">
+          {pending.length === 0 && (
+            <div className="col-span-2 font-bold text-gray-500">No pending tickets !!</div>
+          )}
+
+          {pending.map(ticket => (
+            <div
+              key={ticket.id}
+              onClick={() => onStart(ticket.id)}
+              className="cursor-pointer bg-gray-50 p-4 rounded-lg border hover:shadow-md transition border-4 border-green-500"
+              title={status === "pending"
+          ? "Click to start this ticket"
+          : status === "inProgress"
+          ? "Click Complete to finish this ticket"
+          : ""
+      }
+            >
+              <div className="flex justify-between items-start">
+                <h3 className="font-semibold text-gray-800">{ticket.title}</h3>
+                <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">
+                  {ticket.status}
+                </span>
+              </div>
+
+              <p className="text-sm text-gray-600 mt-2 line-clamp-3">
+                {ticket.description}
+              </p>
+
+              <div className='flex justify-between items-center'>
+                <div className="flex items-center justify-between  space-x-4 text-sm text-gray-500 mt-4">
+                <span className="font-medium">#{ticket.id}</span>
+                <span className="uppercase text-sm font-semibold text-red-500">{ticket.priority}
+                </span>
+              </div>
+              <div class="flex items-center justify-between space-x-4 mt-4">
+                    <span>{ticket.customer}</span>
+                    <span><i class="fa-regular fa-calendar"></i> {ticket.createdAt}</span>
             </div>
-            {/* Card End */}
-            
-        {/* Task Status Start */}
-            <div className="bg-gray-100 p-8 min-h-screen"> 
-            <h2 className="text-2xl font-semibold text-gray-800 mb-6">Task Status</h2>
-        <div className="max-w-md bg-white p-6 rounded-xl shadow-md border border-gray-100">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">Payment Failed - Card Declined </h3>
-            <button className="w-full bg-green-600 text-white font-semibold py-3 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition duration-200 ease-in-out">Complete</button>
-        </div>
-
-        <div className="my-10"></div> 
-            <h2 className="text-2xl font-semibold text-gray-800 mb-6">Resolved Task</h2>
-            <div className="max-w-md bg-indigo-100 p-6 rounded-xl shadow-sm">
-                <p className="text-lg font-medium text-indigo-800">Incorrect Billing Address</p>
+              </div>
             </div>
+          ))}
         </div>
-        {/* Task Status End */}
-        </div>
-        {/* Ticket Cards and Task Status End */}
-     </div>
-      {/* Main section Ends*/}
-   </div>
-// * Main section Ends Here   
+      </div>
 
-    );
-};
+      <div className="bg-white p-6 rounded-xl max-w-[350px] ml-30 shadow border-2 border-red-500">
+        <h3 className="text-xl font-semibold mb-4">Task Status</h3>
 
-export default CustomerTickets;
+        {inProgress.length === 0 ? (
+          <p className="text-sm text-gray-500 mb-4">No in-progress tasks</p>
+        ) : (
+          <div className="space-y-3 mb-4">
+            {inProgress.map(t => (
+              <div key={t.id} className="bg-white p-4 rounded-lg shadow-sm border">
+                <div className="font-medium text-gray-800">{t.title}</div>
+                <button
+                  onClick={() => onComplete(t.id)}
+                  className="mt-3 w-full px-3 py-2 rounded-md bg-green-600 text-white font-medium hover:opacity-95 transition cursor-pointer"
+                >
+                  Complete
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <h4 className="text-lg font-semibold mt-6 mb-3">Resolved Task</h4>
+        {resolved.length === 0 ? (
+          <p className="text-sm text-gray-500">No resolved tasks yet</p>
+        ) : (
+          <div className="space-y-3">
+            {resolved.map(t => (
+              <div key={t.id} className="bg-indigo-50 p-3 rounded-md text-indigo-800">
+                {t.title}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default CustomerTicket;

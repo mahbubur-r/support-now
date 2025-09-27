@@ -4,7 +4,7 @@ const Navbar = () => {
     return (
     <div className="border-2 border-red-500 navbar bg-base-100 shadow-sm flex justify-between  max-w-[1600px] mx-auto">
         <div className="navbar-start">
-            <h2 className='font-bold text-black px-6'>CS —— Ticket System</h2>
+            <h2 className='font-bold text-lg text-black px-6'>CS —— Ticket System</h2>
         </div>
   <     div className="navbar-center hidden lg:flex gap-4 px-6">
             <ul className="menu menu-horizontal px-1 gap-4 ">
