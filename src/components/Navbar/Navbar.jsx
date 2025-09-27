@@ -2,10 +2,10 @@ import React from 'react';
 
 const Navbar = () => {
     return (
-    <div className="border-2 border-red-500 navbar bg-base-100 shadow-sm flex flex-col md:flex-row justify-between  md:max-w-[1600px] mx-auto">
+    <div className="navbar bg-base-100 shadow-sm flex flex-col md:flex-row justify-between  md:max-w-[1600px] mx-auto">
             <h2 className='font-bold text-lg text-black px-6'>CS — Ticket System</h2>
   <     div className="navbar-center flex flex-col md:flex-row md:gap-4 md:px-6">
-            <ul className="menu mx-auto menu-horizontal  px-1 gap-2 md:gap-4 ">
+            <ul className="menu mx-auto menu-horizontal font-bold  px-1 gap-2 md:gap-4 ">
                 <li>Home</li>
                 <li>FAQ</li>
                 <li>Changelog</li>

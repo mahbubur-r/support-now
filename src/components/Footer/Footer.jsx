@@ -2,11 +2,11 @@ import React from 'react';
 
 const Footer = () => {
     return (
-    <div className='border-2 border-red-500 text-white bg-[#000000] md:mt-10 md:max-w-[1600px] md:h-[430px] mx-auto'>
+    <div className='text-white bg-[#000000] md:mt-10 md:max-w-[1600px] md:h-[430px] mx-auto'>
      <div className=' flex flex-col md:flex-row md:justify-around ml-10 items-stretch'>
-            <div className='w-[350px] mt-3 md:mt-10'>
-                <h1 className='font-bold md:text-start text-center'>CS — Ticket System</h1>
-                 <p className='text-[#a1a1aa]'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <div className='md:w-[350px] mt-3 md:mt-10'>
+                <h1 className='font-bold md:text-start'>CS — Ticket System</h1>
+                 <p className='text-[#a1a1aa] items-start'>Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
             </div>  
         <div className='footer-card w-[120px] mt-3 md:mt-10'>
             <h2 className='font-bold'>Company</h2>

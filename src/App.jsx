@@ -60,8 +60,8 @@ if (loading) {
   return (
     <>
       <Navbar></Navbar>
-      <div className=" bg-gray-100 max-w-[1600px] mx-auto p-2 border-5 border-amber-500">
-      <div className="max-w-[1600px] mx-auto border-3 border-blue-700">
+      <div className=" bg-gray-100 max-w-[1600px] mx-auto p-2">
+      <div className="max-w-[1600px] mx-auto">
         <Banner inProgress={inProgress.length} resolved={resolved.length} />
           <CustomerTicket pending={pending}
           inProgress={inProgress}
