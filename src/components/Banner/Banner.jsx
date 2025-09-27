@@ -1,7 +1,7 @@
 import React from 'react';
 const Banner = ({inProgress, resolved}) => {
     return (
-        <div className="border-2 border-red-500 mt-10 max-w-[1600px] mx-auto flex justify-between items-center ">  
+        <div className="border-2 border-red-500 my-5 max-w-[1600px] mx-auto flex justify-between items-center ">  
                 <div className='border-2 border-blue-500 w-[700px] h-[250px] mx-auto bg-[linear-gradient(125.07deg,#632ee3,#9f62f2)]'>
                     <h1 className='text-white text-3xl font-bold justify-center text-center mt-20'>In-Progress</h1>
                     <h1 className='text-white text-7xl font-extrabold justify-center text-center'>{inProgress}</h1>
